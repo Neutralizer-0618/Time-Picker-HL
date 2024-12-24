@@ -51,7 +51,7 @@
             color: white;
         }
         .disabled {
-            cursor: not-allowed;
+            cursor: not-allowed; /* Still not clickable */
         }
         .button-container {
             margin-top: 20px;
@@ -92,7 +92,7 @@
     <div class="button-container">
         <div class="button-row">
             <div class="instructions">
-                Done removing the time you don't prefer? Click here:
+                Done removing unpreferred time? Click here to let me know!
             </div>
             <button class="button complete" id="completeButton">Complete!</button>
         </div>
@@ -201,7 +201,7 @@
             push(responsesRef, response);
 
             // Show alert to professor
-            alert("Thank you for your time!");
+            alert("Thank you for your time! I will send out a google invite after everyone finalizes their schedules!");
         });
 
         // Initialize schedule
