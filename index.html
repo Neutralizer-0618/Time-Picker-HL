@@ -45,13 +45,12 @@
         .timeslot:hover {
             background-color: #f0f0f0;
         }
-        .busy {
-            background-color: #f44336;
+        .busy,
+        .disabled {
+            background-color: #f44336; /* Red for both busy and disabled */
             color: white;
         }
         .disabled {
-            background-color: #ccc;
-            color: #666;
             cursor: not-allowed;
         }
         .button-container {
@@ -93,7 +92,7 @@
     <div class="button-container">
         <div class="button-row">
             <div class="instructions">
-                Done removing the time? Click here:
+                Done removing the time you don't prefer? Click here:
             </div>
             <button class="button complete" id="completeButton">Complete!</button>
         </div>
@@ -157,14 +156,15 @@
                 times.forEach(time => {
                     const slot = document.createElement('div');
                     slot.classList.add('timeslot');
-                    slot.textContent = time;
 
+                    // Apply busy/disabled styling
                     if (disabledTimes[date] && disabledTimes[date].includes(time)) {
                         slot.classList.add('disabled');
                     } else {
                         slot.onclick = () => toggleBusyTime(date, time, slot);
                     }
 
+                    slot.textContent = time;
                     timeslotContainer.appendChild(slot);
                 });
 
@@ -201,7 +201,7 @@
             push(responsesRef, response);
 
             // Show alert to professor
-            alert("Thank you for your time! I will make the google invite once everyone set up their schedules♪");
+            alert("Thank you for your time!");
         });
 
         // Initialize schedule
